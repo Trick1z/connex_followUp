@@ -1,9 +1,39 @@
-<div class="container">
+<div class="container dpf-c">
+  <div class="header dpf-c">
+    <h2 class="fw">Login</h2>
+  </div>
 
+  <div class="text-box dpf jcen">
+    <!-- username -->
 
-  <div class="text-box">
+    <div class="mb-3 username-box">
+      <label for="UsernameInput" class="form-label fw">Username</label>
+      <input
+        [(ngModel)]="data.username"
+        type="text"
+        class="form-control"
+        id="exampleFormControlInput1"
+        placeholder="lnwza007"
+      />
+    </div>
+    <!-- password -->
+    <div class="mb-3 password-box">
+      <label for="UsernameInput" class="form-label fw">Password</label>
+      <input
+        [(ngModel)]="data.password"
+        type="text"
+        class="form-control"
+        id="exampleFormControlInput1"
+        placeholder="********"
+      />
+    </div>
+    <!-- btn groups -->
+    <div class="btn-groups">
+      <button type="button" class="btn btn-primary" (click)="test()">Submit</button>
+    </div>
 
-    <p>1</p>
-    <p>2</p>
+    <div class="create-acc dpf-c" style="margin-top: 10px">
+      <p class="fw">create new account <a href="">Here</a></p>
+    </div>
   </div>
 </div>
