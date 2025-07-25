@@ -14,13 +14,22 @@ import { filter } from 'rxjs';
 export class AppComponent implements OnInit {
 
   showNavbar: boolean = false;
-  ngOnInit(): void {
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe((event: NavigationEnd) => {
-      // แสดง navbar เฉพาะหน้า /games
-      this.showNavbar = event.urlAfterRedirects !== '/login';
-    });
+  // ngOnInit(): void {
+  //   this.router.events.pipe(
+  //     filter(event => event instanceof NavigationEnd)
+  //   ).subscribe((event: NavigationEnd) => {
+  //     // แสดง navbar เฉพาะหน้า /games
+  //     this.showNavbar = event.urlAfterRedirects !== '/login';
+  //   });
+  // }
+
+  ngOnInit() {
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        const hiddenRoutes = ['/','/login', '/register'];
+        this.showNavbar = !hiddenRoutes.includes(event.urlAfterRedirects);
+      });
   }
 
   constructor(private router: Router) {}
